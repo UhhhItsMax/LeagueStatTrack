@@ -1,10 +1,7 @@
 import os
 from dotenv import load_dotenv
 import discord
-import sys
-
-sys.path.insert(0, 'messageHandling')
-import messageHandler
+from messageHandling import messageHandler
 
 
 from discord.ext import commands
