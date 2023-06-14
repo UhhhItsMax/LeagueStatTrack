@@ -7,6 +7,9 @@ class MyDiscordBot(discord.Client):
     async def on_ready(self):
         print("Bot Ist An")
 
+    async def on_message(self, message):
+        print("Nachricht ist angekommen")
+
 # Lade die Umgebungsvariablen aus der .env-Datei
 load_dotenv()
 
