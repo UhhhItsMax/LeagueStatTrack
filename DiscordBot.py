@@ -16,6 +16,12 @@ class MyDiscordBot(discord.Client):
             return
         await message.channel.send("angekommen")
 
+    @bot.event
+
+    async def on_message(message):
+        if message.content == "Test":
+            await message.channel.send("Test erfolgreich")
+
 # Lade die Umgebungsvariablen aus der .env-Datei
 load_dotenv()
 
