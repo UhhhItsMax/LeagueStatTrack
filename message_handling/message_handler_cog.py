@@ -1,6 +1,5 @@
 # message_handler_cog.py
 import os
-print(os.getcwd())
 from discord.ext import commands
 from . import my_help
 class MessageHandlerCog(commands.Cog):
