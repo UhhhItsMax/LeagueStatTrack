@@ -13,12 +13,10 @@ class MyDiscordBot(discord.Client):
     async def on_message(self, message):
         print("Nachricht ist angekommen")
         if message.author == self.user:
-            return
+                return
         await message.channel.send("angekommen")
 
-    @bot.event
-
-    async def on_message(message):
+    async def on_message(self, message):
         if message.content == "Test":
             await message.channel.send("Test erfolgreich")
 
