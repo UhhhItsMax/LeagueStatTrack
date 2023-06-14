@@ -1,24 +1,15 @@
+# DiscordBot.py
 import os
-from dotenv import load_dotenv
 import discord
-from messageHandling import messageHandler
-
-
+from dotenv import load_dotenv
 from discord.ext import commands
+from message_handling.message_handler_cog import MessageHandlerCog
 
-class MyDiscordBot(discord.Client):
+class MyDiscordBot(commands.Bot):
     async def on_ready(self):
-        print("Bot Ist An")
-
-    async def on_message(self, message):
-        print("Nachricht ist angekommen")
-        if message.author == self.user:
-                return
-        await message.channel.send("angekommen")
-
-    async def on_message(self, message):
-        if message.content == "Test":
-            await message.channel.send("Test erfolgreich")
+        print("Bot ist an")
+        self.remove_command('help')  # Entferne den eingebauten Hilfebefehl
+        await self.add_cog(MessageHandlerCog(self))  # Füge den Cog zum Bot hinzu
 
 # Lade die Umgebungsvariablen aus der .env-Datei
 load_dotenv()
@@ -27,5 +18,5 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 intents = discord.Intents.all()
-discordBot = MyDiscordBot(intents=intents)
+discordBot = MyDiscordBot(command_prefix='!', intents=intents)
 discordBot.run(TOKEN)
