@@ -1,6 +1,12 @@
 import os
 from dotenv import load_dotenv
 import discord
+import sys
+
+sys.path.insert(0, 'messageHandling')
+import messageHandler
+
+
 from discord.ext import commands
 
 class MyDiscordBot(discord.Client):
@@ -9,6 +15,9 @@ class MyDiscordBot(discord.Client):
 
     async def on_message(self, message):
         print("Nachricht ist angekommen")
+        if message.author == self.user:
+            return
+        await message.channel.send("angekommen")
 
 # Lade die Umgebungsvariablen aus der .env-Datei
 load_dotenv()
