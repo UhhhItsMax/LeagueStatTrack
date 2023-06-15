@@ -7,6 +7,8 @@ Aufbau des Projekts:
 Main Source File:
     DiscordBot.py
 
+Prefix: '!'
+
 Message Verarbeitung:
     MessageHandlerCog
 
