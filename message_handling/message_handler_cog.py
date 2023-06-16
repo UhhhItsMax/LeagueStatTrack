@@ -2,7 +2,7 @@
 import os
 from discord.ext import commands
 from . import my_help
-from . import my_name
+from . import my_cnostix
 class MessageHandlerCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -21,4 +21,5 @@ class MessageHandlerCog(commands.Cog):
     @commands.command()
     async def CNostix(self, ctx):  #wird ausgeführt, wenn !CNostix im chat geschrieben wird
         #ruft die Funktion aus my_name.py auf
-        await my_name.my_name_function(ctx)
+        print("command aufgerufen")
+        await my_cnostix.my_cnostix_function(ctx)
