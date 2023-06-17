@@ -34,4 +34,4 @@ class MessageHandlerCog(commands.Cog):
     #!sumgames <anySummonerName> return the last five games played by the player
     @commands.command()
     async def sumgames(self, ctx):  
-        await my_games.my_games_function(ctx, ctx.message)
+        await my_sumgames.my_sumgames_function(ctx, ctx.message)

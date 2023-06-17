@@ -2,7 +2,7 @@
 from riot_miscellaneous.match_v5 import *
 from riot_miscellaneous.summoner_v4 import *
 from useful_functions import after_first_space
-async def my_games_function(ctx, message):
+async def my_sumgames_function(ctx, message):
     messageContent = after_first_space.after_first_space_function(message.content)
     print(messageContent)
     summonerGames = get_summonerGames.get_summonerGames_function(messageContent)

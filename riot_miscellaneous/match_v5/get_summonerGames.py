@@ -3,7 +3,10 @@ import os
 from dotenv import load_dotenv
 from riot_miscellaneous.summoner_v4 import *
 
-def get_summonerGames_function(puuid):
+def get_summonerGames_function(summoner_name):
+    
+    puuid = get_puuid.get_puuid_function(summoner_name)
+
     # Get the current folder
     current_folder = os.path.dirname(os.path.abspath(__file__))
 
@@ -18,8 +21,6 @@ def get_summonerGames_function(puuid):
     load_dotenv(env_file)
 
     API_KEY = os.getenv('API_KEY')
-
-    puuid = get_puuid.get_puuid_function(get_summonerName)
 
     # api_URL for puuid
     api_URL_MatchV5 = "https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid + "/ids?start=0&count=20"
