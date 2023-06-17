@@ -26,13 +26,14 @@ def get_summonerRank_function(encryptedID):
     if resp.status_code == 200:
         player_info = resp.json()
         if player_info:
-            try:
-                rankSolo = player_info[0]['rank'] if player_info[0]['queueType'] == 'RANKED_SOLO_5x5' else None
-            except IndexError:
+            if(player_info[0]['queueType'] == 'RANKED_SOLO_5x5'):
+                rankSolo = player_info[0]['rank']
+                rankFlex = player_info[1]['rank']
+            elif player_info[0]['queueType'] == 'RANKED_FLEX_SR':
+                rankSolo = player_info[1]['rank']
+                rankFlex = player_info[0]['rank']
+            else:
                 rankSolo = None
-            try:
-                rankFlex = player_info[1]['rank'] if player_info[1]['queueType'] == 'RANKED_FLEX_SR' else None
-            except IndexError:
                 rankFlex = None
 
     else:

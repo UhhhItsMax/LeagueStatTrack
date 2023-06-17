@@ -26,13 +26,14 @@ def get_summonerTier_function(encryptedID):
     if resp.status_code == 200:
         player_info = resp.json()
         if player_info:
-            try:
-                tierSolo = player_info[0]['tier'] if player_info[0]['queueType'] == 'RANKED_SOLO_5x5' else None
-            except IndexError:
+            if(player_info[0]['queueType'] == 'RANKED_SOLO_5x5'):
+                tierSolo = player_info[0]['tier']
+                tierFlex = player_info[1]['tier']
+            elif player_info[0]['queueType'] == 'RANKED_FLEX_SR':
+                tierSolo = player_info[1]['tier']
+                tierFlex = player_info[0]['tier']
+            else:
                 tierSolo = None
-            try:
-                tierFlex = player_info[1]['tier'] if player_info[1]['queueType'] == 'RANKED_FLEX_SR' else None
-            except IndexError:
                 tierFlex = None
 
     else:
