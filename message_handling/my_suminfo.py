@@ -8,7 +8,11 @@ async def my_suminfo_function(ctx, message):
     summonerLevel = get_summonerLevel.get_summonerLevel_function(messageContent)
     tierSolo, tierFlex = get_summonerTier.get_summonerTier_function(messageContent)
     rankSolo, rankFlex = get_summonerRank.get_summonerRank_function(messageContent)
-    stringSolo = " Rank Solo: " + tierSolo + " " + rankSolo
-    stringFlex = " Rank Flex: " + tierFlex + " " + rankFlex
-    output = "Summoner: " + summonerName + " is level " + str(summonerLevel) + stringSolo + stringFlex
+    puuid = get_puuid.get_puuid_function(messageContent)
+    stringName = "Name: " + summonerName + " "
+    stringLevel = "Level: " + str(summonerLevel) + " "
+    stringSolo = "Rank Solo: " + tierSolo + " " + rankSolo + " "
+    stringFlex = "Rank Flex: " + tierFlex + " " + rankFlex + " "
+    stringPuuid = "Puuid: " + puuid + " "
+    output = stringName + stringLevel + stringSolo + stringFlex + stringPuuid
     await ctx.send(output)
