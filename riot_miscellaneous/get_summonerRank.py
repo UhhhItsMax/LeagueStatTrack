@@ -26,6 +26,10 @@ def get_summonerRank_function(summoner_name):
 
     api_URL_LeagueV4 = api_URL_LeagueV4 + "?api_key=" + API_KEY
     resp = requests.get(api_URL_LeagueV4)
+
+    rankSolo = " "
+    rankFlex = " "
+
     if resp.status_code == 200:
         player_info = resp.json()
         if player_info:
@@ -36,8 +40,8 @@ def get_summonerRank_function(summoner_name):
                 rankSolo = player_info[1]['rank']
                 rankFlex = player_info[0]['rank']
             else:
-                rankSolo = None
-                rankFlex = None
+                rankSolo = "unranked"
+                rankFlex = "unranked"
 
     else:
         #API request failed

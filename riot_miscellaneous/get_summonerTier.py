@@ -26,6 +26,10 @@ def get_summonerTier_function(summoner_name):
 
     api_URL_LeagueV4 = api_URL_LeagueV4 + "?api_key=" + API_KEY
     resp = requests.get(api_URL_LeagueV4)
+
+    tierSolo = "Unranked"
+    tierFlex = "Unranked"
+
     if resp.status_code == 200:
         player_info = resp.json()
         if player_info:
