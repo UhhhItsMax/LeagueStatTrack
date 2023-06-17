@@ -2,7 +2,10 @@ import requests
 import os
 from dotenv import load_dotenv
 
-def get_summonerRank_function(encrypterAccountID):
+def get_summonerRank_function(encryptedID):
+
+    encryptedID = 'KTmZtySmL__IqZzHSR6kdvbqEEbdRr2kNwsqjPBVN1TOuBYL'
+
     # Get the current folder
     current_folder = os.path.dirname(os.path.abspath(__file__))
 
@@ -18,7 +21,7 @@ def get_summonerRank_function(encrypterAccountID):
     API_KEY = os.getenv('API_KEY')
 
     # api_URL for summoner name
-    api_URL_LeagueV4 = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + encrypterAccountID
+    api_URL_LeagueV4 = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + encryptedID
 
     api_URL_LeagueV4 = api_URL_LeagueV4 + "?api_key=" + API_KEY
     resp = requests.get(api_URL_LeagueV4)
@@ -26,11 +29,12 @@ def get_summonerRank_function(encrypterAccountID):
         player_info = resp.json()
         if player_info:
             #player_rank[0] ist der Rang für Solo Duo
-            player_rank[0] = player_info[0]['rank']
+            rankSolo = player_info[0]['rank']
             #player_rank[1] ist der Rang für Flex
-            player_rank[1] = player_info[1]['rank']
+            rankFlex = player_info[1]['rank']
     else:
         #API request failed
-        player_rank = "API request failed"
+        rankSolo = "API request failed"
+        rankFlex = "API request failed"
 
-    return player_rank
+    return 

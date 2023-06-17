@@ -2,7 +2,7 @@ import requests
 import os
 from dotenv import load_dotenv
 
-def get_encryptedAccountID_function(summoner_name):
+def get_encryptedID_function(summoner_name):
     # Get the current folder
     current_folder = os.path.dirname(os.path.abspath(__file__))
 
@@ -25,9 +25,9 @@ def get_encryptedAccountID_function(summoner_name):
     if resp.status_code == 200:
         player_info = resp.json()
         if player_info:
-            player_encryptedAccountID = player_info['accountId']
+            player_encryptedID = player_info['id']
     else:
         #API request failed
-        player_encryptedAccountID = "API request failed"
+        player_encryptedID = "API request failed"
 
-    return player_encryptedAccountID
+    return player_encryptedID
