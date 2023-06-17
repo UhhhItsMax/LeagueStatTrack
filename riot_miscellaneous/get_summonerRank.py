@@ -18,14 +18,17 @@ def get_summonerRank_function(encrypterAccountID):
     API_KEY = os.getenv('API_KEY')
 
     # api_URL for summoner name
-    api_URL_League = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + encrypterAccountID
+    api_URL_LeagueV4 = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + encrypterAccountID
 
-    api_URL_League = api_URL_League + "?api_key=" + API_KEY
-    resp = requests.get(api_URL_League)
+    api_URL_LeagueV4 = api_URL_LeagueV4 + "?api_key=" + API_KEY
+    resp = requests.get(api_URL_LeagueV4)
     if resp.status_code == 200:
         player_info = resp.json()
         if player_info:
-            player_rank = player_info['rank']
+            #player_rank[0] ist der Rang für Solo Duo
+            player_rank[0] = player_info[0]['rank']
+            #player_rank[1] ist der Rang für Flex
+            player_rank[1] = player_info[1]['rank']
     else:
         #API request failed
         player_rank = "API request failed"

@@ -18,10 +18,10 @@ def get_summonerTier_function(encryptedAccountID):
     API_KEY = os.getenv('API_KEY')
 
     # api_URL for summoner name
-    api_URL = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + encryptedAccountID
+    api_URL_LeagueV4 = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + encryptedAccountID
 
-    api_URL = api_URL + "?api_key=" + API_KEY
-    resp = requests.get(api_URL)
+    api_URL_LeagueV4 = api_URL_LeagueV4 + "?api_key=" + API_KEY
+    resp = requests.get(api_URL_LeagueV4)
     if resp.status_code == 200:
         player_info = resp.json()
         # If there is at least one league entry

@@ -21,8 +21,8 @@ class MessageHandlerCog(commands.Cog):
 
     #!summonername <anySummonerName> returns the summonerName of the player
     @commands.command()
-    async def summonername(self, ctx):  #wird ausgeführt, wenn summonername im chat geschrieben wird
-        #ruft die Funktion aus my_summonerName auf
+    async def summonername(self, ctx):  #wird ausgeführt, wenn !summonername im chat geschrieben wird
+        #ruft die Funktion aus my_summonername auf
         await my_summonername.my_summonername_function(ctx, ctx.message)
 
     #!suminfo <anySummonerName> return the summonerName and the level of the player
