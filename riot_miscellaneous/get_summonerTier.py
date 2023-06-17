@@ -2,7 +2,8 @@ import requests
 import os
 from dotenv import load_dotenv
 
-def get_summonerTier_function(encryptedAccountID):
+def get_summonerTier_function(encryptedID):
+
     # Get the current folder
     current_folder = os.path.dirname(os.path.abspath(__file__))
 
@@ -18,20 +19,25 @@ def get_summonerTier_function(encryptedAccountID):
     API_KEY = os.getenv('API_KEY')
 
     # api_URL for summoner name
-    api_URL_LeagueV4 = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + encryptedAccountID
+    api_URL_LeagueV4 = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + encryptedID
 
     api_URL_LeagueV4 = api_URL_LeagueV4 + "?api_key=" + API_KEY
     resp = requests.get(api_URL_LeagueV4)
     if resp.status_code == 200:
         player_info = resp.json()
-        # If there is at least one league entry
         if player_info:
-            # Get the tier of the first league entry
-            player_tier = player_info['tier']
-        else:
-            # Player is unranked
-            player_tier = "Unranked"
+            try:
+                tierSolo = player_info[0]['tier'] if player_info[0]['queueType'] == 'RANKED_SOLO_5x5' else None
+            except IndexError:
+                tierSolo = None
+            try:
+                tierFlex = player_info[1]['tier'] if player_info[1]['queueType'] == 'RANKED_FLEX_SR' else None
+            except IndexError:
+                tierFlex = None
+
     else:
-        # API request failed
-        player_tier = "API request failed"
-    return player_tier
+        #API request failed
+        tierSolo = "API request failed"
+        tierFlex = "API request failed"
+
+    return tierSolo, tierFlex

@@ -4,8 +4,6 @@ from dotenv import load_dotenv
 
 def get_summonerRank_function(encryptedID):
 
-    encryptedID = 'KTmZtySmL__IqZzHSR6kdvbqEEbdRr2kNwsqjPBVN1TOuBYL'
-
     # Get the current folder
     current_folder = os.path.dirname(os.path.abspath(__file__))
 

@@ -7,7 +7,7 @@ async def my_suminfo_function(ctx, message):
     summonerName = get_summonerName.get_summonerName_function(messageContent)
     summonerLevel = get_summonerLevel.get_summonerLevel_function(messageContent)
     encryptedID = get_encryptedID.get_encryptedID_function(messageContent)
-    #summonerTier = get_summonerTier.get_summonerTier_function(encryptedAccountID)
+    tierSolo, tierFlex = get_summonerTier.get_summonerTier_function(encryptedID)
     rankSolo, rankFlex = get_summonerRank.get_summonerRank_function(encryptedID)
-    output = "Summoner: " + summonerName + " is level " + str(summonerLevel) + " Rank: " + rankSolo
+    output = "Summoner: " + summonerName + " is level " + str(summonerLevel) + " Rank Solo: " + tierSolo + " " + rankSolo
     await ctx.send(output)
