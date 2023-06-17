@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from riot_miscellaneous.summoner_v4 import *
 
-def get_summonerGames_function(summoner_name):
+def get_summonerGames_function(summoner_name, historyCount):
     
     puuid = get_puuid.get_puuid_function(summoner_name)
 
@@ -28,12 +28,14 @@ def get_summonerGames_function(summoner_name):
     api_URL_MatchV5 = api_URL_MatchV5 + "&api_key=" + API_KEY
     resp = requests.get(api_URL_MatchV5)
 
+    matchId = []
     if resp.status_code == 200:
         player_matches = resp.json()
-        if player_matches:
-            player_games = player_matches[0]# + ", " +player_matches[1] + ", " + player_matches[2] + ", " + player_matches[3] + ", " + player_matches[4]
+        for i in range(historyCount):
+            if player_matches:
+                matchId.append(player_matches[i])
     else:
         #API request failed
-        player_games = "API request failed"
+        matchId.append("API request failed")
 
-    return player_games
+    return matchId

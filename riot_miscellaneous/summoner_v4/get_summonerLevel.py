@@ -27,9 +27,9 @@ def get_summonerLevel_function(summoner_name):
     if resp.status_code == 200:
         player_info = resp.json()
         if player_info:
-            player_level = player_info['summonerLevel']
+            summoner_level = player_info['summonerLevel']
     else:
         #API request failed
-        player_level = "API request failed"
+        summoner_level = "API request failed"
 
-    return player_level
+    return summoner_level

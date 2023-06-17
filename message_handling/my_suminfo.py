@@ -3,8 +3,7 @@ from riot_miscellaneous.summoner_v4 import *
 from riot_miscellaneous.league_v4 import *
 from useful_functions import after_first_space
 async def my_suminfo_function(ctx, message):
-    messageContent = after_first_space.after_first_space_function(message.content)
-    print(messageContent)
+    messageContent, trash = after_first_space.after_first_space_function(message.content)
     summonerName = get_summonerName.get_summonerName_function(messageContent)
     summonerLevel = get_summonerLevel.get_summonerLevel_function(messageContent)
     tierSolo, tierFlex = get_summonerTier.get_summonerTier_function(messageContent)

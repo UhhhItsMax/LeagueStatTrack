@@ -1,2 +1,2 @@
 #Hier sind alle dateien aus useful_functions aufgelistet
-__all__ = ['after_first_space']
+__all__ = ['after_first_space', 'after_last_space']
