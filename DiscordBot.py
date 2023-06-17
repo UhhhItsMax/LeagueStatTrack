@@ -3,7 +3,7 @@ import os
 import discord
 from dotenv import load_dotenv
 from discord.ext import commands
-from message_handling.message_handler_cog import MessageHandlerCog
+from message_handler_cog import MessageHandlerCog
 
 class MyDiscordBot(commands.Bot):
     async def on_ready(self):

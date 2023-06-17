@@ -1,0 +1,33 @@
+import requests
+import os
+from dotenv import load_dotenv
+
+def get_summonerRank_function(encrypterAccountID):
+    # Get the current folder
+    current_folder = os.path.dirname(os.path.abspath(__file__))
+
+    # Get the parent folder
+    parent_folder = os.path.dirname(current_folder)
+
+    # Create the path to the .env file
+    env_file = os.path.join(parent_folder, '.env')
+
+    # Load the .env file
+    load_dotenv(env_file)
+
+    API_KEY = os.getenv('API_KEY')
+
+    # api_URL for summoner name
+    api_URL = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + encrypterAccountID
+
+    api_URL = api_URL + "?api_key=" + API_KEY
+    resp = requests.get(api_URL)
+    if resp.status_code == 200:
+        player_info = resp.json()
+        if player_info:
+            player_rank = player_info['rank']
+    else:
+        #API request failed
+        player_rank = "API request failed"
+
+    return player_rank
