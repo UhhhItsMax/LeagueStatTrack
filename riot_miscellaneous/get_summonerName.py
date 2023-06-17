@@ -18,10 +18,10 @@ def get_summonerName_function(summoner_name):
     API_KEY = os.getenv('API_KEY')
 
     # api_URL for summoner name
-    api_URL = "https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + summoner_name
+    api_URL_Summoner = "https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + summoner_name
 
-    api_URL = api_URL + "?api_key=" + API_KEY
-    resp = requests.get(api_URL)
+    api_URL_Summoner = api_URL_Summoner + "?api_key=" + API_KEY
+    resp = requests.get(api_URL_Summoner)
 
     if resp.status_code == 200:
         player_info = resp.json()

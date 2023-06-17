@@ -18,10 +18,10 @@ def get_summonerRank_function(encrypterAccountID):
     API_KEY = os.getenv('API_KEY')
 
     # api_URL for summoner name
-    api_URL = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + encrypterAccountID
+    api_URL_League = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + encrypterAccountID
 
-    api_URL = api_URL + "?api_key=" + API_KEY
-    resp = requests.get(api_URL)
+    api_URL_League = api_URL_League + "?api_key=" + API_KEY
+    resp = requests.get(api_URL_League)
     if resp.status_code == 200:
         player_info = resp.json()
         if player_info:
