@@ -1,1 +1,1 @@
-__all__ = ['get_summonerGames']
+__all__ = ['get_summonerGames', 'get_gameInfo']
