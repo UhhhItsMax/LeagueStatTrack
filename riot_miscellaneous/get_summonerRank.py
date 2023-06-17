@@ -28,13 +28,18 @@ def get_summonerRank_function(encryptedID):
     if resp.status_code == 200:
         player_info = resp.json()
         if player_info:
-            #player_rank[0] ist der Rang für Solo Duo
-            rankSolo = player_info[0]['rank']
-            #player_rank[1] ist der Rang für Flex
-            rankFlex = player_info[1]['rank']
+            try:
+                rankSolo = player_info[0]['rank'] if player_info[0]['queueType'] == 'RANKED_SOLO_5x5' else None
+            except IndexError:
+                rankSolo = None
+            try:
+                rankFlex = player_info[1]['rank'] if player_info[1]['queueType'] == 'RANKED_FLEX_SR' else None
+            except IndexError:
+                rankFlex = None
+
     else:
         #API request failed
         rankSolo = "API request failed"
         rankFlex = "API request failed"
 
-    return 
+    return rankSolo, rankFlex
