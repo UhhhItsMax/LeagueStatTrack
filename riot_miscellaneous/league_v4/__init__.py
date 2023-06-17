@@ -1,0 +1,1 @@
+__all__ = ['get_summonerTier', 'get_summonerRank']
