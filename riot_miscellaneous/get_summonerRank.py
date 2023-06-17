@@ -1,8 +1,11 @@
 import requests
 import os
 from dotenv import load_dotenv
+from riot_miscellaneous import get_encryptedID
 
-def get_summonerRank_function(encryptedID):
+def get_summonerRank_function(summoner_name):
+
+    encryptedID = get_encryptedID.get_encryptedID_function(summoner_name)
 
     # Get the current folder
     current_folder = os.path.dirname(os.path.abspath(__file__))
