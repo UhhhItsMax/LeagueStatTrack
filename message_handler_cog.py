@@ -30,3 +30,8 @@ class MessageHandlerCog(commands.Cog):
     async def suminfo(self, ctx):  #wird ausgeführt, wenn suminfo im chat geschrieben wird
         #ruft die Funktion aus my_suminfo auf
         await my_suminfo.my_suminfo_function(ctx, ctx.message)
+
+    #!sumgames <anySummonerName> return the last five games played by the player
+    @commands.command()
+    async def sumgames(self, ctx):  
+        await my_games.my_games_function(ctx, ctx.message)
