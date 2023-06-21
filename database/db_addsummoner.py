@@ -8,7 +8,6 @@ async def db_addsummoner_function(author, summoner_name):
         # Check if the user exists in the users table
         await cursor.execute('SELECT * FROM users WHERE id = ?', (id,))
         user = await cursor.fetchone()
-
         # If the user does not exist, insert it into the users table
         if not user:
             await cursor.execute('INSERT INTO users VALUES (?, ?)', (id, author.name))

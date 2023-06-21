@@ -47,3 +47,7 @@ class MessageHandlerCog(commands.Cog):
     @commands.command()
     async def gameinfo(self, ctx):
         await my_gameinfo.my_gameinfo_function(ctx, ctx.message)
+
+    @commands.command()
+    async def leaderboard(self, ctx):
+        await my_leaderboard.my_leaderboard_function(ctx, self.bot)

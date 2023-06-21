@@ -2,7 +2,6 @@
 from idlelib.configdialog import is_int
 
 from riot_miscellaneous.match_v5 import *
-from riot_miscellaneous.summoner_v4 import *
 from useful_functions import *
 
 

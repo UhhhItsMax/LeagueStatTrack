@@ -2,7 +2,6 @@
 from idlelib.configdialog import is_int
 
 from riot_miscellaneous.match_v5 import *
-from riot_miscellaneous.summoner_v4 import *
 from useful_functions import *
 async def my_sumgames_function(ctx, message):
     messageContent, trash = after_first_space.after_first_space_function(message.content)
