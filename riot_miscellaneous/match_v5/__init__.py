@@ -1,1 +1,1 @@
-__all__ = ['get_summonerGames', 'get_gameInfo']
+__all__ = ['get_matchId', 'get_participantssum', 'get_participantschamp', 'get_num_participants', 'get_participantsstats']

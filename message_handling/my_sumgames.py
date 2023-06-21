@@ -16,7 +16,7 @@ async def my_sumgames_function(ctx, message):
         historyCount = int(historyCount)
     if (historyCount > 10):
         historyCount = 10
-    summonerGames = get_summonerGames.get_summonerGames_function(summoner_name, historyCount)
+    summonerGames = get_matchId.get_matchId_function(summoner_name, historyCount)
     stringGames = ""
     for i in range(historyCount):
         stringGames += "Game: " + str(i+1) + " " + summonerGames[i] + "\n"

@@ -1,1 +1,1 @@
-__all__ = ['get_num_participants']
+__all__ = []

@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from riot_miscellaneous.summoner_v4 import *
 
-def get_summonerGames_function(summoner_name, historyCount):
+def get_matchId_function(summoner_name, historyCount):
     
     puuid = get_puuid.get_puuid_function(summoner_name)
 

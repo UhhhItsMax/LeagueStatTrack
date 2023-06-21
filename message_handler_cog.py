@@ -36,7 +36,14 @@ class MessageHandlerCog(commands.Cog):
     async def sumgames(self, ctx):  
         await my_sumgames.my_sumgames_function(ctx, ctx.message)
 
-    #!gameinfo <anySummonerName> return the Champion Name and the Summoner Name of the first player in the match
     @commands.command()
-    async def gameinfo(self, ctx):  
+    async def addsummoner(self, ctx):
+        await my_addsummoner.my_addsummoner_function(ctx, ctx.message)
+
+    @commands.command()
+    async def mysummoner(self, ctx):
+        await my_mysummoner.my_myummoner_function(ctx)
+
+    @commands.command()
+    async def gameinfo(self, ctx):
         await my_gameinfo.my_gameinfo_function(ctx, ctx.message)
