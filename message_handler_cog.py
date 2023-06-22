@@ -2,6 +2,7 @@
 import discord
 from discord.ext import commands
 from message_handling import *
+from discord import app_commands
 
 class MessageHandlerCog(commands.Cog):
     def __init__(self, bot):
@@ -48,6 +49,8 @@ class MessageHandlerCog(commands.Cog):
     async def gameinfo(self, ctx):
         await my_gameinfo.my_gameinfo_function(ctx, ctx.message)
 
-    @commands.command()
-    async def leaderboard(self, ctx):
-        await my_leaderboard.my_leaderboard_function(ctx, self.bot)
+    @app_commands.command()
+    async def leaderboard(self, interaction: discord.Interaction):
+        await interaction.response.defer()
+        embed = await my_leaderboard.my_leaderboard_function(self.bot)
+        await interaction.followup.send(embed=embed)

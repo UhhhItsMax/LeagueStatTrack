@@ -15,6 +15,7 @@ class MyDiscordBot(commands.Bot):
         db_instance = DatabaseClass()   # Create an instance of DatabaseClass
         db = await db_instance.get_db() # Call get_db on the instance
         await db_startup.db_startup_function(db)
+        await self.tree.sync()
 
 # Lade die Umgebungsvariablen aus der .env-Datei
 load_dotenv()

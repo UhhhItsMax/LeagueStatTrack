@@ -1,7 +1,7 @@
 from database import db_getallinformation
 import discord
 
-async def my_leaderboard_function(ctx, bot):
+async def my_leaderboard_function(bot):
     allid, username, summoner_name, tier_rank = await db_getallinformation.db_getallinformation_function(bot)
 
     # Create a dictionary containing all the useful information
@@ -40,6 +40,7 @@ async def my_leaderboard_function(ctx, bot):
         leaderboard_embed.add_field(name=f"#{i}", value=value, inline=False)
 
     # Send the embed in the channel
-    await ctx.send(embed=leaderboard_embed)
+    return leaderboard_embed
+    #await ctx.send(embed=leaderboard_embed)
 
     #await ctx.send(output_string)
