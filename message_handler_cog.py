@@ -45,9 +45,16 @@ class MessageHandlerCog(commands.Cog):
     async def mysummoner(self, ctx):
         await my_mysummoner.my_myummoner_function(ctx)
 
-    @commands.command()
-    async def gameinfo(self, ctx):
-        await my_gameinfo.my_gameinfo_function(ctx, ctx.message)
+    @app_commands.command()
+    async def gameinfo(self, interaction: discord.Interaction, summoner_name: str, game: int = None):
+        if game == None:
+            game = 1
+        await interaction.response.defer()
+        gameinfo = await my_gameinfo.my_gameinfo_function(summoner_name, game)
+        await interaction.followup.send(gameinfo)
+    #@commands.command()
+    #async def gameinfo(self, ctx):
+    #    await my_gameinfo.my_gameinfo_function(ctx, ctx.message)
 
     @app_commands.command()
     async def leaderboard(self, interaction: discord.Interaction):
