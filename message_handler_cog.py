@@ -20,30 +20,26 @@ class MessageHandlerCog(commands.Cog):
         await my_help.my_help_function(ctx)
 
 
-    #!summonername <anySummonerName> returns the summonerName of the player
-    @commands.command()
-    async def summonername(self, ctx):  #wird ausgeführt, wenn !summonername im chat geschrieben wird
-        #ruft die Funktion aus my_summonername auf
-        await my_summonername.my_summonername_function(ctx, ctx.message)
-
     #!suminfo <anySummonerName> return the summonerName and the level of the player
-    @commands.command()
-    async def suminfo(self, ctx):  #wird ausgeführt, wenn suminfo im chat geschrieben wird
-        #ruft die Funktion aus my_suminfo auf
-        await my_suminfo.my_suminfo_function(ctx, ctx.message)
+    @app_commands.command()
+    async def suminfo(self, interaction: discord.Interaction, summoner_name: str):
+        await interaction.response.defer()
+        output = await my_suminfo.my_suminfo_function(summoner_name)
+        await interaction.followup.send(output)
 
-    #!sumgames <anySummonerName> return the last five games played by the player
-    @commands.command()
-    async def sumgames(self, ctx):  
-        await my_sumgames.my_sumgames_function(ctx, ctx.message)
+    @app_commands.command()
+    async def addsummoner(self, interaction: discord.Interaction, summoner_name: str):
+        id = interaction.user.id
+        await interaction.response.defer()
+        output = await my_addsummoner.my_addsummoner_function(id, summoner_name)
+        await interaction.followup.send(output)
 
-    @commands.command()
-    async def addsummoner(self, ctx):
-        await my_addsummoner.my_addsummoner_function(ctx, ctx.message)
-
-    @commands.command()
-    async def mysummoner(self, ctx):
-        await my_mysummoner.my_myummoner_function(ctx)
+    @app_commands.command()
+    async def mysummoner(self, interaction: discord.Interaction):
+        id = interaction.user.id
+        await interaction.response.defer()
+        summoner_name = await my_mysummoner.my_mysummoner_function(id)
+        await interaction.followup.send(summoner_name)
 
     @app_commands.command()
     async def gameinfo(self, interaction: discord.Interaction, summoner_name: str, game: int = None):
@@ -52,9 +48,6 @@ class MessageHandlerCog(commands.Cog):
         await interaction.response.defer()
         gameinfo = await my_gameinfo.my_gameinfo_function(summoner_name, game)
         await interaction.followup.send(gameinfo)
-    #@commands.command()
-    #async def gameinfo(self, ctx):
-    #    await my_gameinfo.my_gameinfo_function(ctx, ctx.message)
 
     @app_commands.command()
     async def leaderboard(self, interaction: discord.Interaction):

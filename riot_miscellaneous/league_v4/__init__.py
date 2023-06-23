@@ -1,1 +1,1 @@
-__all__ = ['get_summonerTier', 'get_summonerRank']
+__all__ = ['get_summonerTier', 'get_summonerRank', 'get_summonerWins', 'get_summonerLosses']

@@ -1,9 +1,8 @@
 from database.Database import DatabaseClass # import the DatabaseClass
 
-async def db_addsummoner_function(author, summoner_name):
+async def db_addsummoner_function(id, summoner_name):
     db_instance = DatabaseClass()  # Create an instance of DatabaseClass
     db = await db_instance.get_db()  # Call get_db on the instance
-    id = author.id
     async with db.cursor() as cursor:
         # Check if the user exists in the users table
         await cursor.execute('SELECT * FROM users WHERE id = ?', (id,))
