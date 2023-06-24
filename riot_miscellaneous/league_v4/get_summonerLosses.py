@@ -50,5 +50,4 @@ def get_summonerLosses_function(summoner_name):
         lossesSolo = "API request failed"
         lossesFlex = "API request failed"
 
-
     return lossesSolo, lossesFlex

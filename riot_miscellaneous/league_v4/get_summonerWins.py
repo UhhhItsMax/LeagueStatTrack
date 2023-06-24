@@ -50,4 +50,5 @@ def get_summonerWins_function(summoner_name):
         winsSolo = "API request failed"
         winsFlex = "API request failed"
 
+
     return winsSolo, winsFlex
