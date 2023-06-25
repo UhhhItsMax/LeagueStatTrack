@@ -28,8 +28,8 @@ def get_summonerLosses_function(summoner_name):
     api_URL_LeagueV4 = api_URL_LeagueV4 + "?api_key=" + API_KEY
     resp = requests.get(api_URL_LeagueV4)
 
-    rankSolo = " "
-    rankFlex = " "
+    lossesSolo = ""
+    lossesFlex = ""
 
     if resp.status_code == 200:
         player_info = resp.json()
@@ -41,9 +41,9 @@ def get_summonerLosses_function(summoner_name):
             elif player_info[0]['queueType'] == 'RANKED_FLEX_SR':
                 lossesSolo = player_info[1]['losses']
                 lossesFlex = player_info[0]['losses']
-            else:
-                lossesSolo = "no losses"
-                lossesFlex = "no losses"
+            #else:
+            #    lossesSolo = "no losses"
+            #    lossesFlex = "no losses"
 
     else:
         #API request failed

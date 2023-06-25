@@ -28,8 +28,8 @@ def get_summonerWins_function(summoner_name):
     api_URL_LeagueV4 = api_URL_LeagueV4 + "?api_key=" + API_KEY
     resp = requests.get(api_URL_LeagueV4)
 
-    rankSolo = " "
-    rankFlex = " "
+    winsSolo = ""
+    winsFlex = ""
 
     if resp.status_code == 200:
         player_info = resp.json()
@@ -41,14 +41,16 @@ def get_summonerWins_function(summoner_name):
             elif player_info[0]['queueType'] == 'RANKED_FLEX_SR':
                 winsSolo = player_info[1]['wins']
                 winsFlex = player_info[0]['wins']
-            else:
-                winsSolo = "no wins"
-                winsFlex = "no wins"
+            #else:
+            #    winsSolo = "no wins"
+            #    winsFlex = "no wins"
 
     else:
         #API request failed
         winsSolo = "API request failed"
         winsFlex = "API request failed"
 
-
     return winsSolo, winsFlex
+
+
+get_summonerWins_function("Manic Shaco")
